@@ -112,10 +112,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _max_resolution: 295
-    - _max_resolution_distance: 0.02
-    - _min_resolution: 16
-    - _pixelization_step_size: 1
+    - _max_resolution: 720
+    - _max_resolution_distance: 0.01
+    - _min_resolution: 64
+    - _pixelization_step_size: 10
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
