@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
-    public float maxSpeed;
-    public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
-    Vector3 moveDirection;
-    Rigidbody rb;
+    [SerializeField] private float moveSpeed, maxSpeed;
+    [SerializeField] private Rigidbody rb;
+    private float horizontalInput, verticalInput;
+    private Vector3 moveDirection;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
 
     private void Update()
     {
-        MyInput();
+        HandleInput();
         SpeedControl();
     }
 
@@ -30,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
     }
 
-    private void MyInput()
+    private void HandleInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -38,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
     }
 
