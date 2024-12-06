@@ -6,11 +6,15 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private Transform playerView;
     [SerializeField] private Transform playerCamera;
+    [SerializeField] private PlayerMovement playerMovement;
     //Variables for rotating camera
     [SerializeField] private float sensX, sensY;
     private float xRotation, yRotation;
     //Variables for Headbob
-    [SerializeField] private float amount, frequency, smooth;
+    [SerializeField] private float sprintingAmount, sprintingFrequency;
+    [SerializeField] private float walkingAmount, walkingFrequency;
+    [SerializeField] private float sneakingAmount, sneakingFrequency;
+    [SerializeField] private float smooth;
     private Vector3 startingPos;
 
     private void Start()
@@ -54,6 +58,25 @@ public class PlayerCamera : MonoBehaviour
 
     private void StartHeadBob()
     {
+        float frequency = 0.002f;
+        float amount = 10f;
+
+        if (playerMovement.isSprinting)
+        {
+            amount = sprintingAmount;
+            frequency = sprintingFrequency;
+        } 
+        else if (playerMovement.isWalking)
+        {
+            amount = walkingAmount;
+            frequency = walkingFrequency;
+        }
+        else if (playerMovement.isSneaking)
+        {
+            amount = sneakingAmount;
+            frequency = sneakingFrequency;
+        }
+
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Lerp(pos.y, Mathf.Sin(Time.time * frequency) * amount * 1.4f, smooth * Time.deltaTime);
         pos.x += Mathf.Lerp(pos.x, Mathf.Cos(Time.time * frequency / 2f) * amount * 1.6f, smooth * Time.deltaTime);

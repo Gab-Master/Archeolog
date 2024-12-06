@@ -110,8 +110,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  maxSpeed: 3
+  walkingMaxSpeed: 2
+  sneakingMaxSpeed: 1
+  sprintingMaxSpeed: 4
   rb: {fileID: 6186393795932253512}
+  isSprinting: 0
+  isSneaking: 0
+  isWalking: 0
 --- !u!114 &3870516253533941589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,10 +131,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerView: {fileID: 7638330915425486866}
   playerCamera: {fileID: 4934796044928109446}
+  playerMovement: {fileID: 4477252129883004258}
   sensX: 600
   sensY: 600
-  amount: 0.002
-  frequency: 10
+  sprintingAmount: 0.007
+  sprintingFrequency: 15
+  walkingAmount: 0.004
+  walkingFrequency: 7
+  sneakingAmount: 0.002
+  sneakingFrequency: 6
   smooth: 10
 --- !u!114 &6790116786103374180
 MonoBehaviour:
