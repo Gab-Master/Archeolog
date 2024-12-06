@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, maxSpeed;
+    [SerializeField] private float moveSpeed, walkingMaxSpeed, sneakingMaxSpeed, sprintingMaxSpeed;
     [SerializeField] private Rigidbody rb;
     private float horizontalInput, verticalInput;
     private Vector3 moveDirection;
+    public bool isSprinting, isSneaking, isWalking;
 
     private void Start()
     {
@@ -29,6 +30,24 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+            isWalking = false;
+            isSneaking = false;
+        } 
+        else if (Input.GetKey(KeyCode.C))
+        {
+            isSprinting = false;
+            isWalking = false;
+            isSneaking = true;
+        }
+        else
+        {
+            isSprinting = false;
+            isWalking = true;
+            isSneaking = false;
+        }
     }
 
     private void MovePlayer()
@@ -40,6 +59,20 @@ public class PlayerMovement : MonoBehaviour
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        float maxSpeed = 3;
+
+        if (isSprinting) 
+        {
+            maxSpeed = sprintingMaxSpeed;
+        }
+        else if (isWalking)
+        {
+            maxSpeed = walkingMaxSpeed;
+        }
+        else if (isSneaking)
+        {
+            maxSpeed = sneakingMaxSpeed;
+        }
 
         if(flatVel.magnitude > maxSpeed)
         {
