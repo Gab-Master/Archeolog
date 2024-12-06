@@ -9,6 +9,11 @@ public class TorchManager : MonoBehaviour
 
     void Update()
     {
+        LightingTorch();
+    }
+
+    void LightingTorch()
+    {
         if (isTorchOn)
         {
             TorchLight.enabled = true;
