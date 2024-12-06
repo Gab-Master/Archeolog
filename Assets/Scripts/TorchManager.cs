@@ -7,12 +7,12 @@ public class TorchManager : MonoBehaviour
     [SerializeField] private bool isTorchOn;
     [SerializeField] private Light TorchLight;
 
-    void Update()
+    private void Update()
     {
         LightingTorch();
     }
 
-    void LightingTorch()
+    private void LightingTorch()
     {
         if (isTorchOn)
         {
