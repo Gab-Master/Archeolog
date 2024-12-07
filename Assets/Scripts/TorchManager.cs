@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TorchManager : MonoBehaviour
 {
-    [SerializeField] private bool isTorchOn;
+    [SerializeField] private bool isTorchOn = false;
     [SerializeField] private Light TorchLight;
 
     private void Update()

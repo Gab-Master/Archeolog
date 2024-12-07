@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float walkingMaxSpeed, sneakingMaxSpeed, sprintingMaxSpeed;
+    [SerializeField] private float moveSpeed = 30f;
+    [SerializeField] private float walkingMaxSpeed = 2f, sneakingMaxSpeed = 1f, sprintingMaxSpeed = 4f;
     [SerializeField] private Rigidbody rb;
     private float horizontalInput, verticalInput;
     private Vector3 moveDirection;

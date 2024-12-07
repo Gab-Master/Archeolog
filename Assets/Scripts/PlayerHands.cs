@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerHands : MonoBehaviour
 {
     [SerializeField] private GameObject Torch;
-    [SerializeField] private bool isHoldingTorch;
+    [SerializeField] private bool isHoldingTorch = false;
 
     private void Update()
     {

@@ -5,9 +5,9 @@ using UnityEngine;
 public class HeadBobbing : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private float sprintingAmount, sprintingFrequency;
-    [SerializeField] private float walkingAmount, walkingFrequency;
-    [SerializeField] private float sneakingAmount, sneakingFrequency;
+    [SerializeField] private float sprintingAmount = 0.007f, sprintingFrequency = 15f;
+    [SerializeField] private float walkingAmount = 0.004f, walkingFrequency = 7f;
+    [SerializeField] private float sneakingAmount = 0.002f, sneakingFrequency = 6f;
     [SerializeField] private float smooth;
     private Vector3 startingPos;
 
@@ -19,7 +19,6 @@ public class HeadBobbing : MonoBehaviour
     private void Update()
     {
         HeadBob();
-        StopHeadBob();
     }
     private void HeadBob()
     {
@@ -30,6 +29,10 @@ public class HeadBobbing : MonoBehaviour
         if (inputMagnitude > 0)
         {
             StartHeadBob();
+        }
+        else
+        {
+            StopHeadBob();
         }
     }
 
