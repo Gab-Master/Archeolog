@@ -14,13 +14,6 @@ public class TorchManager : MonoBehaviour
 
     private void LightingTorch()
     {
-        if (isTorchOn)
-        {
-            TorchLight.enabled = true;
-        }
-        else
-        {
-            TorchLight.enabled = false;
-        }
+        TorchLight.enabled = isTorchOn;
     }
 }

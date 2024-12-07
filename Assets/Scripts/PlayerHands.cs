@@ -5,23 +5,16 @@ using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
-    [SerializeField] GameObject Torch;
+    [SerializeField] private GameObject Torch;
     [SerializeField] private bool isHoldingTorch;
 
     private void Update()
     {
-        HoldingTorch();
+        UpdateTorchState();
     }
 
-    private void HoldingTorch()
+    private void UpdateTorchState()
     {
-        if (isHoldingTorch)
-        {
-            Torch.SetActive(true);
-        }
-        else
-        {
-            Torch.SetActive(false);
-        }
+        Torch.SetActive(isHoldingTorch);
     }
 }

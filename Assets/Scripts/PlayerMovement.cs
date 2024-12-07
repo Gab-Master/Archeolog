@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, walkingMaxSpeed, sneakingMaxSpeed, sprintingMaxSpeed;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkingMaxSpeed, sneakingMaxSpeed, sprintingMaxSpeed;
     [SerializeField] private Rigidbody rb;
     private float horizontalInput, verticalInput;
     private Vector3 moveDirection;
-    public bool isSprinting, isSneaking, isWalking;
+    private MovementType currentMovement = MovementType.Walking;
+
+    public MovementType CurrentMovement => currentMovement;
 
     private void Start()
     {
@@ -30,23 +33,15 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        currentMovement = MovementType.Walking;
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            isSprinting = true;
-            isWalking = false;
-            isSneaking = false;
+            currentMovement = MovementType.Sprinting;
         } 
         else if (Input.GetKey(KeyCode.C))
         {
-            isSprinting = false;
-            isWalking = false;
-            isSneaking = true;
-        }
-        else
-        {
-            isSprinting = false;
-            isWalking = true;
-            isSneaking = false;
+            currentMovement = MovementType.Sneaking;
         }
     }
 
@@ -61,15 +56,22 @@ public class PlayerMovement : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         float maxSpeed = 3;
 
-        if (isSprinting) 
+        maxSpeed = currentMovement switch
+        {
+            MovementType.Sprinting => sprintingMaxSpeed,
+            MovementType.Sneaking => sneakingMaxSpeed,
+            _ => walkingMaxSpeed
+        };
+
+        if (currentMovement == MovementType.Sprinting) 
         {
             maxSpeed = sprintingMaxSpeed;
         }
-        else if (isWalking)
+        else if (currentMovement == MovementType.Walking)
         {
             maxSpeed = walkingMaxSpeed;
         }
-        else if (isSneaking)
+        else if (currentMovement == MovementType.Sneaking)
         {
             maxSpeed = sneakingMaxSpeed;
         }
@@ -80,4 +82,11 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+}
+
+public enum MovementType
+{
+    Walking,
+    Sprinting,
+    Sneaking
 }

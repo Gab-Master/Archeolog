@@ -130,17 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 7638330915425486866}
-  playerCamera: {fileID: 4934796044928109446}
-  playerMovement: {fileID: 4477252129883004258}
   sensX: 600
   sensY: 600
-  sprintingAmount: 0.007
-  sprintingFrequency: 15
-  walkingAmount: 0.004
-  walkingFrequency: 7
-  sneakingAmount: 0.002
-  sneakingFrequency: 6
-  smooth: 10
 --- !u!114 &6790116786103374180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +158,7 @@ GameObject:
   - component: {fileID: 6297340688778094071}
   - component: {fileID: 8866855498945310597}
   - component: {fileID: 8314675284583149144}
+  - component: {fileID: 6778955277248225165}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -292,6 +284,26 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &6778955277248225165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099377608989213380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3a80c4393ced243bff3059db9c5067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 4477252129883004258}
+  sprintingAmount: 0.007
+  sprintingFrequency: 15
+  walkingAmount: 0.004
+  walkingFrequency: 7
+  sneakingAmount: 0.002
+  sneakingFrequency: 6
+  smooth: 10
 --- !u!1 &6404669413979803384
 GameObject:
   m_ObjectHideFlags: 0
