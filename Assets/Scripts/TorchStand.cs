@@ -9,6 +9,9 @@ public class TorchStand : MonoBehaviour
     [SerializeField] private bool hasTorch = true;
     [SerializeField] private bool isLightOn = false;
 
+    public bool IsTorchOn => isLightOn;
+    public bool HasTorch => hasTorch;
+
     void Update()
     {
         UpdateTorchStand();
@@ -18,5 +21,16 @@ public class TorchStand : MonoBehaviour
     {
         torchObject.SetActive(hasTorch);
         Light.enabled = isLightOn;
+    }
+
+    public void PutTorch(bool isTorchLighted)
+    {
+        hasTorch = true;
+        isLightOn = isTorchLighted;
+    }
+
+    public void TakeTorch()
+    {
+        hasTorch = false;
     }
 }

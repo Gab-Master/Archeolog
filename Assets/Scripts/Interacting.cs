@@ -7,6 +7,7 @@ public class Interacting : MonoBehaviour
 {
     [SerializeField] private Image centerDot;
     [SerializeField] private float pickingDistanse = 2f;
+    [SerializeField] private PlayerHands playerHands;
     private Ray ray;
     
     void Update()
@@ -21,7 +22,32 @@ public class Interacting : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Picked");
+                if (hit.collider.gameObject.layer == 12) //TorchStand layer
+                {
+                    TorchStand torchStand = hit.collider.gameObject.GetComponent<TorchStand>();
+                    if (playerHands.IsHoldingTorch)
+                    {
+                        if (!torchStand.HasTorch)
+                        {
+                            torchStand.PutTorch(playerHands.IsTorchOn);
+                            playerHands.TakeOffTorch();
+                        }
+                    }
+                    else
+                    {
+                        playerHands.TakeTorch(torchStand.IsTorchOn);
+                        torchStand.TakeTorch();
+                    }
+                }
+                else if(hit.collider.gameObject.layer == 11) //Torch layer
+                {
+                    TorchManager torch = hit.collider.gameObject.GetComponent<TorchManager>();
+                    if (!playerHands.IsHoldingTorch)
+                    {
+                        playerHands.TakeTorch(torch.IsTorchOn);
+                        torch.Take();
+                    }
+                }
             }
             else
             {

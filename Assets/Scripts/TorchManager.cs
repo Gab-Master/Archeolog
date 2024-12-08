@@ -7,6 +7,8 @@ public class TorchManager : MonoBehaviour
     [SerializeField] private bool isTorchOn = false;
     [SerializeField] private Light TorchLight;
 
+    public bool IsTorchOn => isTorchOn;
+
     private void Update()
     {
         LightingTorch();
@@ -15,5 +17,10 @@ public class TorchManager : MonoBehaviour
     private void LightingTorch()
     {
         TorchLight.enabled = isTorchOn;
+    }
+
+    public void Take()
+    {
+        Destroy(gameObject);
     }
 }
