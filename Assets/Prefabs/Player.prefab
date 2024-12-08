@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc5aa74c82b9f84488a31eafdc21b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  centerDot: {fileID: 0}
+  pickingDistanse: 2
 --- !u!1 &2307363914440554786
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4786785151433925459}
   - component: {fileID: 7130309435725091224}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +217,7 @@ GameObject:
   - component: {fileID: 2829746401805660307}
   - component: {fileID: 623487484350848140}
   - component: {fileID: 6523815774005853411}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +495,7 @@ GameObject:
   - component: {fileID: 5058142888045963434}
   - component: {fileID: 8186974288162252559}
   - component: {fileID: 6231028004827042757}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
