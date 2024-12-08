@@ -3238,12 +3238,6 @@ PrefabInstance:
       propertyPath: centerDot
       value: 
       objectReference: {fileID: 1169769547}
-    - target: {fileID: 6790116786103374180, guid: f4e45144ce7562147b3e43cd7e3e9d33,
-        type: 3}
-      propertyPath: torchPrefab
-      value: 
-      objectReference: {fileID: 3204018292571680537, guid: 2d73d9f1f3a9a374a9397cc388882079,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

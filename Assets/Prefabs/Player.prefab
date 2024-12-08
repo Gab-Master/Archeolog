@@ -143,10 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3902bff53f4d1ac46a43da9450b37e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerView: {fileID: 7638330915425486866}
   Torch: {fileID: 5582759865267630608}
   isTorchOn: 1
   isHoldingTorch: 1
   playerLight: {fileID: 623487484350848140}
+  torchPrefab: {fileID: 3204018292571680537, guid: 2d73d9f1f3a9a374a9397cc388882079,
+    type: 3}
+  throwForce: 1200
 --- !u!114 &6284350087236393024
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class Interacting : MonoBehaviour
         ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out RaycastHit hit) & hit.collider.tag == "CanInteract" & hit.distance <= pickingDistanse) 
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (hit.collider.gameObject.layer == 12) //TorchStand layer
                 {
