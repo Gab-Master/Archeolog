@@ -19,6 +19,11 @@ public class TorchManager : MonoBehaviour
         TorchLight.enabled = isTorchOn;
     }
 
+    public void SetLight(bool isTorchLighted)
+    {
+        isTorchOn = isTorchLighted;
+    }
+    
     public void Take()
     {
         Destroy(gameObject);

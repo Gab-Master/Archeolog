@@ -9,6 +9,7 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private bool isTorchOn;
     [SerializeField] private bool isHoldingTorch = false;
     [SerializeField] private Light playerLight;
+    [SerializeField] private GameObject torchPrefab;
 
     public bool IsHoldingTorch => isHoldingTorch;
     public bool IsTorchOn => isTorchOn;
@@ -17,6 +18,10 @@ public class PlayerHands : MonoBehaviour
     {
         UpdateTorchState();
         UpdatePlayerLight();
+        if (Input.GetKeyDown(KeyCode.F) & IsHoldingTorch)
+        {
+            ThrowTorch();
+        }
     }
 
     private void UpdateTorchState()
@@ -39,5 +44,13 @@ public class PlayerHands : MonoBehaviour
     {
         isHoldingTorch = false;
         isTorchOn = false;
+    }
+
+    private void ThrowTorch()
+    {
+        GameObject torch = Instantiate(torchPrefab, transform.localPosition, Quaternion.identity);
+        TorchManager torchScript = torch.GetComponent<TorchManager>();
+        torchScript.SetLight(isTorchOn);
+        TakeOffTorch();
     }
 }
