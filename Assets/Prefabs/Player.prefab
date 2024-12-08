@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7638330915425486866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: 4477252129883004258}
   - component: {fileID: 3870516253533941589}
   - component: {fileID: 6790116786103374180}
-  m_Layer: 12
+  - component: {fileID: 6284350087236393024}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -143,6 +144,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Torch: {fileID: 2307363914440554786}
   isHoldingTorch: 1
+--- !u!114 &6284350087236393024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834440983363359561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc5aa74c82b9f84488a31eafdc21b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2307363914440554786
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4786785151433925459}
   - component: {fileID: 7130309435725091224}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +215,7 @@ GameObject:
   - component: {fileID: 2829746401805660307}
   - component: {fileID: 623487484350848140}
   - component: {fileID: 6523815774005853411}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +335,7 @@ GameObject:
   - component: {fileID: 8866855498945310597}
   - component: {fileID: 8314675284583149144}
   - component: {fileID: 6778955277248225165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -384,7 +397,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 3127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -480,7 +493,7 @@ GameObject:
   - component: {fileID: 5058142888045963434}
   - component: {fileID: 8186974288162252559}
   - component: {fileID: 6231028004827042757}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +580,7 @@ GameObject:
   - component: {fileID: 2220884342872265511}
   - component: {fileID: 6578836340104185226}
   - component: {fileID: 62664026209509966}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: PlayerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +687,7 @@ GameObject:
   - component: {fileID: 8891518830677944638}
   - component: {fileID: 3560111174163145262}
   - component: {fileID: 8933115617667666827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerHandsCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
