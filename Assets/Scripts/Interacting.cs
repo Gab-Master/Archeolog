@@ -14,7 +14,7 @@ public class Interacting : MonoBehaviour
     private void CheckHit()
     {
         ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        if (Physics.Raycast(ray, out RaycastHit hit) & hit.collider.tag == "CanBePicked") 
+        if (Physics.Raycast(ray, out RaycastHit hit) & hit.collider.tag == "CanInteract") 
         {
             if (Input.GetKeyDown(KeyCode.E))
             {

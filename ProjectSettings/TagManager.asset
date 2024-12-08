@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CanBePicked
+  - CanInteract
   layers:
   - Default
   - TransparentFX
@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - 
-  - player
-  - torch
-  - 
-  - playerHands
+  - Player
+  - Torch
+  - TorchStand
+  - PlayerHands
   - 
   - 
   - 
