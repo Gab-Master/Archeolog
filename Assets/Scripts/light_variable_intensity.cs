@@ -11,12 +11,13 @@ public class light_variable_intensity : MonoBehaviour
     public float change_rate;
     public float min_intensity;
     public float max_intensity;
+    private System.DateTime seed_init;
 
     void Start()
     {
         light = GetComponent<Light>();
         curr_intensity = start_intensity;
-        Random.seed = seed;
+        Random.InitState(seed + (int)seed_init.Millisecond);
     }
 
     void Update()
