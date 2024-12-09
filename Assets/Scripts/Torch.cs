@@ -28,4 +28,13 @@ public class Torch : MonoBehaviour, IInteractable
             Take();
         }
     }
+
+    public void LightIt(GameObject interacter)
+    {
+        var playerHands = interacter.GetComponent<PlayerHands>();
+        if(playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
+        {
+            SetLight(true);
+        }
+    }
 }

@@ -24,6 +24,10 @@ public class Interacting : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 interactableObject.Interact(this.gameObject);
+            } 
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                interactableObject.LightIt(this.gameObject);
             }
         }
         else

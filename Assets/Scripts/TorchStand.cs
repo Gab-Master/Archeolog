@@ -40,4 +40,13 @@ public class TorchStand : MonoBehaviour, IInteractable
             TakeTorch();
         }
     }
+
+    public void LightIt(GameObject interacter)
+    {
+        var playerHands = interacter.GetComponent<PlayerHands>();
+        if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
+        {
+            lightArea.enabled = true;
+        }
+    }
 }

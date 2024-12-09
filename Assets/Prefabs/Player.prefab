@@ -234,11 +234,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTorch: {fileID: 5582759865267630608}
+  playerLighter: {fileID: 75526126853441008}
   torchPrefab: {fileID: 3204018292571680537, guid: 2d73d9f1f3a9a374a9397cc388882079,
     type: 3}
   playerView: {fileID: 7638330915425486866}
   playerLight: {fileID: 623487484350848140}
   isPlayerLightOn: 1
+  torchLightRange: 8
+  lighterLightRange: 3
   throwForce: 1200
 --- !u!114 &6284350087236393024
 MonoBehaviour:
@@ -299,8 +302,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.4288112, b: 0, a: 1}
-  m_Intensity: 5.49
-  m_Range: 8
+  m_Intensity: 1.57
+  m_Range: 3.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
