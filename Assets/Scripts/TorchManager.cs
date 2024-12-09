@@ -6,18 +6,22 @@ public class TorchManager : MonoBehaviour
 {
     [SerializeField] private bool isTorchOn = false;
     [SerializeField] private Light TorchLight;
-    [SerializeField] private ParticleSystem fire_particles;
+    [SerializeField] private ParticleSystem fireParticles;
+
+    void Start()
+    {
+        fireParticles = GetComponent<ParticleSystem>();
+    }
 
     private void Update()
     {
-        fire_particles = GetComponent<ParticleSystem>();
         LightingTorch();
     }
 
     private void LightingTorch()
     {
         TorchLight.enabled = isTorchOn;
-        var ps_emission = fire_particles.emission;
+        var ps_emission = fireParticles.emission;
         ps_emission.enabled = isTorchOn;
     }
 }

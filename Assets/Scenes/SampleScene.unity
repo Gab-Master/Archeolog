@@ -6984,10 +6984,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 0}
   seed: 1
-  start_intensity: 5
-  change_rate: 0.5
-  min_intensity: 3
-  max_intensity: 7
+  startPos: {x: 0, y: 0, z: 0}
+  startIntensity: 5
+  startRange: 8
+  changeRate: 0.5
+  minIntensity: 4
+  maxIntensity: 6
+  minRange: 7
+  maxRange: 9
+  maxMove: 0.1
+  minMove: 0
 --- !u!1 &1711235085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2411429793930702328, guid: 2d73d9f1f3a9a374a9397cc388882079,
@@ -7007,11 +7013,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 0}
-  seed: 3
-  start_intensity: 5
-  change_rate: 0.5
-  min_intensity: 3
-  max_intensity: 7
+  seed: 1
+  startPos: {x: 0, y: 0, z: 0}
+  startIntensity: 5
+  startRange: 8
+  changeRate: 0.5
+  minIntensity: 4
+  maxIntensity: 6
+  minRange: 7
+  maxRange: 9
+  maxMove: 0.1
+  minMove: 0
 --- !u!1 &1711421772
 GameObject:
   m_ObjectHideFlags: 0
@@ -7354,11 +7366,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 0}
-  seed: 2
-  start_intensity: 5
-  change_rate: 0.5
-  min_intensity: 3
-  max_intensity: 7
+  seed: 1
+  startPos: {x: 0, y: 0, z: 0}
+  startIntensity: 5
+  startRange: 8
+  changeRate: 0.5
+  minIntensity: 4
+  maxIntensity: 6
+  minRange: 7
+  maxRange: 9
+  maxMove: 0.1
+  minMove: 0
 --- !u!198 &1967977636 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1892766761492499823, guid: 2d73d9f1f3a9a374a9397cc388882079,
