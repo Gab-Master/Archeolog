@@ -5,6 +5,7 @@ using UnityEngine;
 public class Torch : MonoBehaviour, IInteractable
 {
     [SerializeField] private Light torchLight;
+    private light_variable_intensity lvi;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.enabled = true; }
     [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.enabled = false; }
@@ -37,4 +38,6 @@ public class Torch : MonoBehaviour, IInteractable
             SetLight(true);
         }
     }
+    
+
 }

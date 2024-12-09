@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5963784754854532876}
   - component: {fileID: 9016711607703321363}
   - component: {fileID: 3391182063982549884}
+  - component: {fileID: 1883040300126826066}
   m_Layer: 12
   m_Name: Area Light
   m_TagString: Untagged
@@ -118,6 +119,30 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1883040300126826066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6377754064993131612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 9016711607703321363}
+  seed: 0
+  startPos: {x: 0, y: 0, z: 0}
+  startIntensity: 5
+  startRange: 8
+  changeRate: 0.5
+  minIntensity: 4
+  maxIntensity: 6
+  minRange: 7
+  maxRange: 9
+  maxMove: 0.1
+  minMove: 0
 --- !u!1 &7750516910546619808
 GameObject:
   m_ObjectHideFlags: 0
