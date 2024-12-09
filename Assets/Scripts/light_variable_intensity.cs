@@ -24,7 +24,7 @@ public class light_variable_intensity : MonoBehaviour
 
     void Start()
     {
-        light = GetComponent<Light>();
+        // light = GetComponent<Light>();
         currIntensity = startIntensity;
         currRange = startRange;
         Random.InitState(seed + (int)seed_init.Millisecond);
