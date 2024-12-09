@@ -2,35 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchStand : MonoBehaviour
+public class TorchStand : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject torchObject;
-    [SerializeField] private Light Light;
-    [SerializeField] private bool hasTorch = true;
-    [SerializeField] private bool isLightOn = false;
+    [SerializeField] private Light lightArea;
 
-    public bool IsTorchOn => isLightOn;
-    public bool HasTorch => hasTorch;
-
-    void Update()
-    {
-        UpdateTorchStand();
-    }
-
-    private void UpdateTorchStand()
-    {
-        torchObject.SetActive(hasTorch);
-        Light.enabled = isLightOn;
-    }
+    [ContextMenu("Torch light ON")] private void LightOn() { lightArea.enabled = true; }
+    [ContextMenu("Torch light OFF")] private void LightOff() { lightArea.enabled = false; }
+    [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); }
+    [ContextMenu("Without torch")] private void WithoutTorch() { torchObject.SetActive(false); }
 
     public void PutTorch(bool isTorchLighted)
     {
-        hasTorch = true;
-        isLightOn = isTorchLighted;
+        torchObject.SetActive(true);
+        lightArea.enabled = isTorchLighted;
     }
 
     public void TakeTorch()
     {
-        hasTorch = false;
+        torchObject.SetActive(false);
+    }
+
+    public void Interact(GameObject interacter)
+    {
+        var playerHands = interacter.GetComponent<PlayerHands>();
+        if (playerHands.CurrentHandItem == RightHandItem.Torch)
+        {
+            if (!torchObject.activeSelf)
+            {
+                PutTorch(playerHands.IsPlayerLightOn);
+                playerHands.TakeOffTorch();
+            }
+        }
+        else
+        {
+            playerHands.TakeTorch(lightArea.enabled);
+            TakeTorch();
+        }
     }
 }

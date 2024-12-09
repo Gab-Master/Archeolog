@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5613f226897e0e84c86c59ad37c87e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTorchOn: 0
-  TorchLight: {fileID: 348044325373627063}
+  torchLight: {fileID: 348044325373627063}
 --- !u!136 &3066861767240236322
 CapsuleCollider:
   m_ObjectHideFlags: 0
