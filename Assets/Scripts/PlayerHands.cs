@@ -16,6 +16,7 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private float torchLightIntensity = 5.5f;
     [SerializeField] private float lighterLightIntensity = 1f;
     [SerializeField] private float throwForce = 1200f;
+    [SerializeField] private int lighterChance = 5;
     private RightHandItem currentHandItem = RightHandItem.Lighter;
 
     public RightHandItem CurrentHandItem => currentHandItem;
@@ -78,6 +79,15 @@ public class PlayerHands : MonoBehaviour
         if (!isPlayerLightOn)
         {
             //DŸwiêk próby zapalenia zapalniczki
+            float badLuck = Random.Range(1, lighterChance);
+            if (badLuck != 1)
+            {
+                isPlayerLightOn = true;
+            }
+        }
+        else if(currentHandItem == RightHandItem.Lighter)
+        {
+            isPlayerLightOn = false;
         }
     }
 

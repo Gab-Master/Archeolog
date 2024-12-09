@@ -265,6 +265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorchStand (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9016711607703321363, guid: e6f87b508b06a364894646cda5ae3f4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -728,6 +733,11 @@ PrefabInstance:
       propertyPath: isLightOn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4107049195729048975, guid: e6f87b508b06a364894646cda5ae3f4d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7068870481504331970, guid: e6f87b508b06a364894646cda5ae3f4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -782,6 +792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TorchStand (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016711607703321363, guid: e6f87b508b06a364894646cda5ae3f4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1353,6 +1368,11 @@ PrefabInstance:
       propertyPath: isLightOn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4107049195729048975, guid: e6f87b508b06a364894646cda5ae3f4d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7068870481504331970, guid: e6f87b508b06a364894646cda5ae3f4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1848,6 +1868,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 348044325373627063, guid: 2d73d9f1f3a9a374a9397cc388882079,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3204018292571680537, guid: 2d73d9f1f3a9a374a9397cc388882079,
         type: 3}
       propertyPath: m_Name
@@ -2683,6 +2708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TorchStand (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016711607703321363, guid: e6f87b508b06a364894646cda5ae3f4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
