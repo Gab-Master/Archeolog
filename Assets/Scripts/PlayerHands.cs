@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem sparkParticles;
+    [SerializeField] private ParticleSystem torchParticles;
+    [SerializeField] private ParticleSystem lighterParticles;
     [SerializeField] private GameObject playerTorch;
     [SerializeField] private GameObject playerLighter;
     [SerializeField] private GameObject torchPrefab;
@@ -26,6 +29,7 @@ public class PlayerHands : MonoBehaviour
 
     private void Start()
     {
+        isPlayerLightOn = false;
     }
 
     private void Update()
@@ -85,28 +89,31 @@ public class PlayerHands : MonoBehaviour
                 case RightHandItem.Torch:
                     playerTorchLight.enabled = true;
                     playerLighterLight.enabled = false;
+                    torchParticles.Play();
+                    lighterParticles.Stop();
                     break;
                 case RightHandItem.Lighter:
                     playerTorchLight.enabled = false;
                     playerLighterLight.enabled = true;
-                    break;
-                default:
-                    playerTorchLight.enabled = false;
-                    playerLighterLight.enabled = false;
+                    torchParticles.Stop();
+                    lighterParticles.Play();
                     break;
             }
         }
         else
-            {
-                playerTorchLight.enabled = false;
-                playerLighterLight.enabled = false;
-            }
+        {
+            lighterParticles.Stop();
+            torchParticles.Stop();
+            playerTorchLight.enabled = false;
+            playerLighterLight.enabled = false;
+        }
     }
 
     private void UseRightHand()
     {
         if (!isPlayerLightOn)
         {
+            sparkParticles.Play();
             //DŸwiêk próby zapalenia zapalniczki
             float badLuck = Random.Range(1, lighterChance);
             if (badLuck != 1)

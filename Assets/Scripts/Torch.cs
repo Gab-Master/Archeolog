@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractable
 {
+    [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private Light torchLight;
     private light_variable_intensity lvi;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.enabled = true; }
     [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.enabled = false; }
 
+    private void Start()
+    {
+        if (torchLight.enabled)
+        {
+            lightParticles.Play();
+        }
+        else
+        {
+            lightParticles.Stop();
+        }
+    }
+
     public void SetLight(bool isTorchLighted)
     {
         torchLight.enabled = isTorchLighted;
+        if (torchLight.enabled)
+        {
+            lightParticles.Play();
+        }
+        else
+        {
+            lightParticles.Stop();
+        }
     }
     
     public void Take()
