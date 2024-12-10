@@ -791,6 +791,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: corridor_L
       objectReference: {fileID: 0}
+    - target: {fileID: 4356588000127070561, guid: 3de2d5526c3b8714eb8b885379c1628e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6095186235223451442, guid: 3de2d5526c3b8714eb8b885379c1628e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1747,6 +1752,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1767205618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1812610359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1834440983363359561, guid: f4e45144ce7562147b3e43cd7e3e9d33,
+    type: 3}
+  m_PrefabInstance: {fileID: 2742556331138478393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1812610366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812610359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0019e4f41545f24468a8d3f49c2b9326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingSounds:
+  - {fileID: 8300000, guid: 960df661ae9f5a1439fada2354b5cb1c, type: 3}
+  - {fileID: 8300000, guid: db81d98588761f441a7c73329c7f313f, type: 3}
+  - {fileID: 8300000, guid: c6a755d4cdf10ad45b5c496f3f27e1ea, type: 3}
+  - {fileID: 8300000, guid: 9d100fc4601d9424fa1856c419847599, type: 3}
+  - {fileID: 8300000, guid: d2621c9d62165bc4889803654e1f8f7a, type: 3}
+  - {fileID: 8300000, guid: 884da02b5bfd7ac4c9350d031f0cba6d, type: 3}
+  - {fileID: 8300000, guid: 00fc8e840c479bf4a9743c7f4eac928e, type: 3}
+  - {fileID: 8300000, guid: d5ce04e6e789b8246997714d3b181c09, type: 3}
+  - {fileID: 8300000, guid: 0321831b58bcc74499d583b1701173ec, type: 3}
+  - {fileID: 8300000, guid: dc7cdc22e04ed904890ab49f291d8e80, type: 3}
+  - {fileID: 8300000, guid: de8908eeb64012045a477f08851ad039, type: 3}
+  - {fileID: 8300000, guid: 4b4147e944f6fe948b4f499ac86d099b, type: 3}
+  - {fileID: 8300000, guid: 687d2dc6d83b86840b440a14d1f748bb, type: 3}
+  - {fileID: 8300000, guid: eb8d598e13a9bbd46ac4c5a030114ed6, type: 3}
+  - {fileID: 8300000, guid: 0ef2071d77d485c4f83835bf9a971eb4, type: 3}
+  runningSounds:
+  - {fileID: 8300000, guid: 61e42cb6e7f8d7e4a807866725ba8eb5, type: 3}
+  - {fileID: 8300000, guid: 6bdbb9462ce62484c8530d82acfcaac7, type: 3}
+  - {fileID: 8300000, guid: 81dcae79d10c35045b6dbc925256e1ce, type: 3}
+  - {fileID: 8300000, guid: 09e2fde4511dade4b894c48b9de7213d, type: 3}
+  - {fileID: 8300000, guid: abfd6ec227c31654d876431ed2b1bb35, type: 3}
+  - {fileID: 8300000, guid: bdd0bddfb50debe48b06fbbe7e7280cc, type: 3}
+  - {fileID: 8300000, guid: 422ca356f21a99e49979bcf8b5551c72, type: 3}
+  - {fileID: 8300000, guid: 740e5458cff60ba40bbc34a206d99c8f, type: 3}
+  - {fileID: 8300000, guid: 35b0d0f6d03032c47beb17358229d9be, type: 3}
+  - {fileID: 8300000, guid: e0d5074040e0d574f88a797ed3dd81b4, type: 3}
+  - {fileID: 8300000, guid: 4d8aaedd084d49d41ac97d6f2cb2bcb4, type: 3}
+  - {fileID: 8300000, guid: 4a9a9f0dde664814b977984531536a01, type: 3}
+  - {fileID: 8300000, guid: 254aea8c08ccbc044a7c4b01f0f9cc4a, type: 3}
+  - {fileID: 8300000, guid: 86b4c43371cf89e42be58a8bde559a01, type: 3}
+  - {fileID: 8300000, guid: 5e064dd77f38f3b43a6d3c18817fd4e4, type: 3}
+  - {fileID: 8300000, guid: 444ed2ec551ac0943b8bb037427d6a98, type: 3}
+  walkStepInterval: 0.5
+  runStepInterval: 0.3
+  minVelocity: 0.5
 --- !u!1001 &1856481107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2186,7 +2245,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1834440983363359561, guid: f4e45144ce7562147b3e43cd7e3e9d33,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1812610366}
   m_SourcePrefab: {fileID: 100100000, guid: f4e45144ce7562147b3e43cd7e3e9d33, type: 3}
 --- !u!1001 &4980760897444300273
 PrefabInstance:
