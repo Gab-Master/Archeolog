@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TorchStand : MonoBehaviour, IInteractable
 {
+    [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private GameObject torchObject;
     [SerializeField] private Light lightArea;
 
@@ -12,10 +13,30 @@ public class TorchStand : MonoBehaviour, IInteractable
     [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); }
     [ContextMenu("Without torch")] private void WithoutTorch() { torchObject.SetActive(false); }
 
+    private void Start()
+    {
+        if (lightArea.enabled)
+        {
+            lightParticles.Play();
+        }
+        else
+        {
+            lightParticles.Stop();
+        }
+    }
+
     public void PutTorch(bool isTorchLighted)
     {
         torchObject.SetActive(true);
         lightArea.enabled = isTorchLighted;
+        if (lightArea.enabled)
+        {
+            lightParticles.Play();
+        }
+        else
+        {
+            lightParticles.Stop();
+        }
     }
 
     public void TakeTorch()
@@ -47,6 +68,14 @@ public class TorchStand : MonoBehaviour, IInteractable
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             lightArea.enabled = true;
+            if (lightArea.enabled)
+            {
+                lightParticles.Play();
+            }
+            else
+            {
+                lightParticles.Stop();
+            }
         }
     }
 }
