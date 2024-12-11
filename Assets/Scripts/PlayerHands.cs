@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
+    [SerializeField] private AudioSource fireSound;
+    [SerializeField] private AudioSource lighterSparkSound;
+    [SerializeField] private AudioSource lighterFireSound;
     [SerializeField] private ParticleSystem sparkParticles;
     [SerializeField] private ParticleSystem torchParticles;
     [SerializeField] private ParticleSystem lighterParticles;
@@ -22,6 +25,7 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private float throwForce = 1200f;
     [SerializeField] private int lighterChance = 5;
     private RightHandItem currentHandItem = RightHandItem.Lighter;
+    private bool interaction = false;
 
     public RightHandItem CurrentHandItem => currentHandItem;
     public bool IsPlayerLightOn => isPlayerLightOn;
@@ -91,17 +95,22 @@ public class PlayerHands : MonoBehaviour
                     playerLighterLight.enabled = false;
                     torchParticles.Play();
                     lighterParticles.Stop();
+                    if (!fireSound.isPlaying){fireSound.Play();}
+                    lighterFireSound.Stop();
                     break;
                 case RightHandItem.Lighter:
                     playerTorchLight.enabled = false;
                     playerLighterLight.enabled = true;
+                    if (!lighterFireSound.isPlaying) { lighterFireSound.Play(); }
                     torchParticles.Stop();
                     lighterParticles.Play();
+                    fireSound.Stop();
                     break;
             }
         }
         else
         {
+            fireSound.Stop();
             lighterParticles.Stop();
             torchParticles.Stop();
             playerTorchLight.enabled = false;
@@ -114,6 +123,7 @@ public class PlayerHands : MonoBehaviour
         if (!isPlayerLightOn)
         {
             sparkParticles.Play();
+            lighterSparkSound.Play();
             //DŸwiêk próby zapalenia zapalniczki
             float badLuck = Random.Range(1, lighterChance);
             if (badLuck != 1)
@@ -123,8 +133,21 @@ public class PlayerHands : MonoBehaviour
         }
         else if(currentHandItem == RightHandItem.Lighter)
         {
-            isPlayerLightOn = false;
+            if (interaction)
+            {
+                interaction = false;
+            }
+            else
+            {
+                isPlayerLightOn = false;
+            }
         }
+    }
+
+    public void FlickerON()
+    {
+        isPlayerLightOn = true;
+        interaction = true;
     }
 
     public void TakeTorch(bool isTorchLighted)

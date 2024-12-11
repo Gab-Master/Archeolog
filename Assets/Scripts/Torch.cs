@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractable
 {
+    [SerializeField] private AudioSource fireSound;
     [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private Light torchLight;
     private light_variable_intensity lvi;
@@ -16,10 +17,12 @@ public class Torch : MonoBehaviour, IInteractable
         if (torchLight.enabled)
         {
             lightParticles.Play();
+            fireSound.Play();
         }
         else
         {
             lightParticles.Stop();
+            fireSound.Stop();
         }
     }
 
@@ -29,10 +32,12 @@ public class Torch : MonoBehaviour, IInteractable
         if (torchLight.enabled)
         {
             lightParticles.Play();
+            fireSound.Play();
         }
         else
         {
             lightParticles.Stop();
+            fireSound.Stop();
         }
     }
     
@@ -57,6 +62,7 @@ public class Torch : MonoBehaviour, IInteractable
         if(playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             SetLight(true);
+            playerHands.FlickerON();
         }
     }
     

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class light_variable_intensity : MonoBehaviour
 {
-    [SerializeField] private Light light;
+    [SerializeField] private Light lightArea;
     [SerializeField] private int seed;
     [SerializeField] private Vector3 startPos;
     [SerializeField] private float startIntensity;
@@ -34,14 +34,14 @@ public class light_variable_intensity : MonoBehaviour
 
     public void Update()
     {
-        transform.localPosition = startPos + new Vector3(0,flicker,0);
-        flicker = Random.Range(minMove, maxMove);
+        //transform.localPosition = startPos + new Vector3(0,flicker,0);
+        //flicker = Random.Range(minMove, maxMove);
         currIntensity += Random.Range(changeRate*(-1),changeRate);
         currRange += Random.Range(changeRate * (-1), changeRate);
         currIntensity = Mathf.Clamp(currIntensity, minIntensity, maxIntensity);
-        light.intensity = currIntensity;
+        lightArea.intensity = currIntensity;
         currRange = Mathf.Clamp(currRange, minRange, maxRange);
-        light.range = currRange;
+        lightArea.range = currRange;
     }
 
     public void setIntensityProperties(float newStartIntensity, float newMinIntensity, float newMaxIntensity)

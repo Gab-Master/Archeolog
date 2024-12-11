@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TorchStand : MonoBehaviour, IInteractable
 {
+    [SerializeField] private AudioSource fireSound;
     [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private GameObject torchObject;
     [SerializeField] private Light lightArea;
@@ -18,10 +19,13 @@ public class TorchStand : MonoBehaviour, IInteractable
         if (lightArea.enabled)
         {
             lightParticles.Play();
+            fireSound.Play();
+
         }
         else
         {
             lightParticles.Stop();
+            fireSound.Stop();
         }
     }
 
@@ -32,10 +36,12 @@ public class TorchStand : MonoBehaviour, IInteractable
         if (lightArea.enabled)
         {
             lightParticles.Play();
+            fireSound.Play();
         }
         else
         {
             lightParticles.Stop();
+            fireSound.Stop();
         }
     }
 
@@ -57,8 +63,11 @@ public class TorchStand : MonoBehaviour, IInteractable
         }
         else
         {
-            playerHands.TakeTorch(lightArea.enabled);
-            TakeTorch();
+            if (torchObject.activeSelf)
+            {
+                playerHands.TakeTorch(lightArea.enabled);
+                TakeTorch();
+            }
         }
     }
 
@@ -68,14 +77,9 @@ public class TorchStand : MonoBehaviour, IInteractable
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             lightArea.enabled = true;
-            if (lightArea.enabled)
-            {
-                lightParticles.Play();
-            }
-            else
-            {
-                lightParticles.Stop();
-            }
+            fireSound.Play();
+            lightParticles.Play();
+            playerHands.FlickerON();
         }
     }
 }
