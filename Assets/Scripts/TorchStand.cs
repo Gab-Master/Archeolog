@@ -47,6 +47,7 @@ public class TorchStand : MonoBehaviour, IInteractable
 
     public void TakeTorch()
     {
+        fireSound.Stop();
         torchObject.SetActive(false);
     }
 

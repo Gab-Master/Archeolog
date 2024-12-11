@@ -113,6 +113,7 @@ public class PlayerHands : MonoBehaviour
             fireSound.Stop();
             lighterParticles.Stop();
             torchParticles.Stop();
+            lighterFireSound.Stop();
             playerTorchLight.enabled = false;
             playerLighterLight.enabled = false;
         }
