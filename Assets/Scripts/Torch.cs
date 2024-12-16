@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
+public class Torch : MonoBehaviour, IInteractable, ICanBeLighted, IOutline
 {
     [SerializeField] private LightController torchLight;
+    [SerializeField] private Outline outline;
+
+    private void Start()
+    {
+        UnShowOutline();
+    }
+
     public void Take()
     {
         Destroy(gameObject);
@@ -27,5 +34,14 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
         {
             torchLight.SetLight(true);
         }
+    }
+    public void ShowOutline()
+    {
+        outline.enabled = true;
+    }
+
+    public void UnShowOutline()
+    {
+        outline.enabled = false;
     }
 }

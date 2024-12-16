@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
+public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted, IOutline
 {
     [SerializeField] private GameObject torchObject;
+    [SerializeField] private Outline outline;
     private LightController torchLight;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.SetLight(true); }
@@ -15,6 +16,7 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
     private void Start()
     {
         torchLight = torchObject.GetComponent<LightController>();
+        UnShowOutline();
     }
 
     public void PutTorch(bool isTorchLighted)
@@ -27,6 +29,15 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
     {
         torchLight.SetLight(false);
         torchObject.SetActive(false);
+    }
+    public void ShowOutline()
+    {
+        outline.enabled = true;
+    }
+
+    public void UnShowOutline()
+    {
+        outline.enabled = false;
     }
 
     public void Interact(GameObject interacter)

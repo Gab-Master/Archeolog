@@ -50,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5613f226897e0e84c86c59ad37c87e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundHolder: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
-    type: 3}
   soundSource: {fileID: 1413136785936187114}
   lightParticles: {fileID: 4314449425215929398}
   lightSource: {fileID: 9016711607703321363}
@@ -5187,6 +5185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7068870481504331970}
   - component: {fileID: 2308748941377997894}
+  - component: {fileID: 2427918213851760130}
   - component: {fileID: 4308098724416692134}
   - component: {fileID: 255735726591747155}
   m_Layer: 12
@@ -5226,6 +5225,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torchObject: {fileID: 4107049195729048975}
+  outline: {fileID: 2427918213851760130}
+--- !u!114 &2427918213851760130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750516910546619808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!82 &4308098724416692134
 AudioSource:
   m_ObjectHideFlags: 0

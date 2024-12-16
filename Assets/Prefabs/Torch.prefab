@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5792698296282270948}
   - component: {fileID: 7962470035192842147}
   - component: {fileID: 3578286551663952733}
+  - component: {fileID: 7707799687284901279}
   - component: {fileID: -4560189781622452201}
   - component: {fileID: 7712154628511550526}
   - component: {fileID: -7134931304356237724}
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torchLight: {fileID: 7962470035192842147}
+  outline: {fileID: 7707799687284901279}
 --- !u!114 &7962470035192842147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,24 @@ MonoBehaviour:
   maxRange: 9
   maxMove: 0
   minMove: 0
+--- !u!114 &7707799687284901279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3204018292571680537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 1
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!198 &-4560189781622452201
 ParticleSystem:
   m_ObjectHideFlags: 0
