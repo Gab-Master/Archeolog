@@ -2201,6 +2201,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[0].soundName
+      value: torchFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[1].soundName
+      value: lighterSparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[2].soundName
+      value: lighterFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[0].audioSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a0f517e0ba66cd14eaf93fd9d172bde9, type: 3}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[1].audioSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5eddf5c660754b041ba23e11cf42d65a, type: 3}
+    - target: {fileID: 2300913527413920098, guid: 4d621e70d951b0046998beb799528a7c,
+        type: 3}
+      propertyPath: soundsHolderList.Array.data[2].audioSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a0f517e0ba66cd14eaf93fd9d172bde9, type: 3}
     - target: {fileID: 2402388554440358541, guid: 4d621e70d951b0046998beb799528a7c,
         type: 3}
       propertyPath: m_LocalPosition.x

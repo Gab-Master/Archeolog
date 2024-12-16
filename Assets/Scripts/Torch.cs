@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
 {
-    [SerializeField] private AudioSource fireSound;
+    [SerializeField] private SoundHolder soundHolder;
+    [SerializeField] private AudioSource soundSource;
     [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private Light torchLight;
-    private LightBlinking lvi;
+    private AudioClip torchFireSound;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.enabled = true; }
     [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.enabled = false; }
 
+    public bool IsLighted => torchLight.enabled;
+
     private void Start()
     {
-        if (torchLight.enabled)
-        {
-            lightParticles.Play();
-            fireSound.Play();
-        }
-        else
-        {
-            lightParticles.Stop();
-            fireSound.Stop();
-        }
+        torchFireSound = soundHolder.GetAudioClip("torchFire");
+        soundSource.clip = torchFireSound;
+        SetLight(torchLight.enabled);
     }
 
     public void SetLight(bool isTorchLighted)
@@ -32,12 +28,12 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
         if (torchLight.enabled)
         {
             lightParticles.Play();
-            fireSound.Play();
+            soundSource.Play();
         }
         else
         {
             lightParticles.Stop();
-            fireSound.Stop();
+            soundSource.Stop();
         }
     }
     
@@ -48,7 +44,7 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
 
     public void Interact(GameObject interacter)
     {
-        var playerHands = interacter.GetComponent<PlayerHands>();
+        PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if (playerHands.CurrentHandItem != RightHandItem.Torch)
         {
             playerHands.TakeTorch(torchLight.enabled);
@@ -58,7 +54,7 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
 
     public void LightIt(GameObject interacter)
     {
-        var playerHands = interacter.GetComponent<PlayerHands>();
+        PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if(playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             SetLight(true);

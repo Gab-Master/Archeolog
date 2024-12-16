@@ -4,56 +4,34 @@ using UnityEngine;
 
 public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
 {
-    [SerializeField] private AudioSource fireSound;
-    [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private GameObject torchObject;
-    [SerializeField] private Light lightArea;
+    private Torch torch;
 
-    [ContextMenu("Torch light ON")] private void LightOn() { lightArea.enabled = true; }
-    [ContextMenu("Torch light OFF")] private void LightOff() { lightArea.enabled = false; }
-    [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); }
-    [ContextMenu("Without torch")] private void WithoutTorch() { torchObject.SetActive(false); }
+    [ContextMenu("Torch light ON")] private void LightOn() { torch.SetLight(true); }
+    [ContextMenu("Torch light OFF")] private void LightOff() { torch.SetLight(false); }
+    [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); torch.SetLight(false); }
+    [ContextMenu("Without torch")] private void WithoutTorch() { torch.SetLight(false); torchObject.SetActive(false); }
 
     private void Start()
     {
-        if (lightArea.enabled)
-        {
-            lightParticles.Play();
-            fireSound.Play();
-
-        }
-        else
-        {
-            lightParticles.Stop();
-            fireSound.Stop();
-        }
+        torch = GetComponent<Torch>();
     }
 
     public void PutTorch(bool isTorchLighted)
     {
         torchObject.SetActive(true);
-        lightArea.enabled = isTorchLighted;
-        if (lightArea.enabled)
-        {
-            lightParticles.Play();
-            fireSound.Play();
-        }
-        else
-        {
-            lightParticles.Stop();
-            fireSound.Stop();
-        }
+        torch.SetLight(isTorchLighted);
     }
 
     public void TakeTorch()
     {
-        fireSound.Stop();
+        torch.SetLight(false);
         torchObject.SetActive(false);
     }
 
     public void Interact(GameObject interacter)
     {
-        var playerHands = interacter.GetComponent<PlayerHands>();
+        PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if (playerHands.CurrentHandItem == RightHandItem.Torch)
         {
             if (!torchObject.activeSelf)
@@ -66,7 +44,7 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
         {
             if (torchObject.activeSelf)
             {
-                playerHands.TakeTorch(lightArea.enabled);
+                playerHands.TakeTorch(torch.IsLighted);
                 TakeTorch();
             }
         }
@@ -74,12 +52,10 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
 
     public void LightIt(GameObject interacter)
     {
-        var playerHands = interacter.GetComponent<PlayerHands>();
+        PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
-            lightArea.enabled = true;
-            fireSound.Play();
-            lightParticles.Play();
+            torch.SetLight(true);
             playerHands.FlickerON();
         }
     }

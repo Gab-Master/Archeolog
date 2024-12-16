@@ -7,7 +7,9 @@ public class PlayerLighter : MonoBehaviour
     [SerializeField] private ParticleSystem sparkParticles;
     [SerializeField] private ParticleSystem lighterParticles;
     [SerializeField] private Light playerLighterLight;
-    // Start is called before the first frame update
+    
+
+
     void Start()
     {
         

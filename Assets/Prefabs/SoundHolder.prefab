@@ -44,7 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d079f266f72fb54e91eaf94924ec9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsHolderList: []
+  soundsHolderList:
+  - soundName: torchFire
+    audioSound: {fileID: 8300000, guid: a0f517e0ba66cd14eaf93fd9d172bde9, type: 3}
+  - soundName: lighterSparks
+    audioSound: {fileID: 8300000, guid: 5eddf5c660754b041ba23e11cf42d65a, type: 3}
+  - soundName: lighterFire
+    audioSound: {fileID: 8300000, guid: a0f517e0ba66cd14eaf93fd9d172bde9, type: 3}
   soundsListsHolderList:
   - soundsListName: running
     audioSoundList:

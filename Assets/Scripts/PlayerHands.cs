@@ -20,7 +20,7 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private int lighterChance = 5;
     private RightHandItem currentHandItem = RightHandItem.Lighter;
     private bool interaction = false;
-    private AudioSource fireSound;
+    private AudioSource torchFireSound;
     private AudioSource lighterSparkSound;
     private AudioSource lighterFireSound;
 

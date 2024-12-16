@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerTorch : MonoBehaviour
 {
+    [SerializeField] private SoundHolder soundHolder;
     [SerializeField] private ParticleSystem torchParticles;
     [SerializeField] private Light playerTorchLight;
-    // Start is called before the first frame update
+    [SerializeField] private AudioSource soundSource;
+    private AudioClip torchFireSound;
+
     void Start()
     {
-        
+        torchFireSound = soundHolder.GetAudioClip("torchFire");
     }
 
     // Update is called once per frame
