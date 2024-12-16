@@ -7,7 +7,9 @@ public class Interacting : MonoBehaviour
 {
     [SerializeField] private Image centerDot;
     [SerializeField] private float pickingDistanse = 2f;
-    
+    private bool isLookingToFire = false;
+
+    public bool IsLookingToFire => isLookingToFire;
     void Update()
     {
         CheckHit();
@@ -17,6 +19,7 @@ public class Interacting : MonoBehaviour
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         centerDot.enabled = false;
+        isLookingToFire = false;
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= pickingDistanse)
         {
             if (hit.collider.TryGetComponent(out IInteractable interactableObject))
@@ -30,6 +33,7 @@ public class Interacting : MonoBehaviour
             if (hit.collider.TryGetComponent(out ICanBeLighted canBeLightedObject))
             {
                 centerDot.enabled = true;
+                isLookingToFire = true;
                 if (Input.GetKeyDown(KeyCode.Mouse1))
                 {
                     canBeLightedObject.LightIt(this.gameObject);

@@ -26,7 +26,6 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             torchLight.SetLight(true);
-            playerHands.FlickerON();
         }
     }
 }

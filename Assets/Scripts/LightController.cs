@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField] private SoundHolder soundHolder;
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private Light lightSource;
     [SerializeField] private string fireSoundName;
     private AudioClip fireSound;
+    private SoundHolder soundHolder;
 
     [ContextMenu("Torch light ON")] private void LightOn() { lightSource.enabled = true; }
     [ContextMenu("Torch light OFF")] private void LightOff() { lightSource.enabled = false; }
 
     public bool IsLighted => lightSource.enabled;
 
+    private void Awake()
+    {
+        soundHolder = GameObject.FindWithTag("soundsHolder").GetComponent<SoundHolder>();
+    }
     private void Start()
     {
         fireSound = soundHolder.GetAudioClip(fireSoundName);
@@ -27,11 +31,11 @@ public class LightController : MonoBehaviour
     {
         lightSource.enabled = isTorchLighted;
         if (lightSource.enabled)
-        {
-            lightParticles.Play();
+        {    
             if (!soundSource.isPlaying)
             {
                 soundSource.Play();
+                lightParticles.Play();
             }
         }
         else

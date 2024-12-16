@@ -8,11 +8,12 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private GameObject playerTorch, playerLighter;
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private Transform playerView;
+    [SerializeField] private Interacting interacting;
     [SerializeField] private float throwForce = 1200f;
-    [SerializeField] private int lighterChance = 5;
+    [SerializeField] private Lighter lighter;
     private LightController torchLight, lighterLight;
+    
     private RightHandItem currentHandItem;
-    private bool interaction = false;
 
     public RightHandItem CurrentHandItem => currentHandItem;
     public bool IsPlayerLightOn => torchLight.IsLighted || lighterLight.IsLighted;
@@ -20,6 +21,8 @@ public class PlayerHands : MonoBehaviour
 
     private void Start()
     {
+        torchLight = playerTorch.GetComponent<LightController>();
+        lighterLight = playerLighter.GetComponent<LightController>();
         torchLight.SetLight(false);
         lighterLight.SetLight(false);
         currentHandItem = RightHandItem.Lighter;
@@ -40,19 +43,26 @@ public class PlayerHands : MonoBehaviour
 
     private void UpdateRightHand()
     {
-        playerTorch.SetActive(false);
-        playerLighter.SetActive(false);
         if (currentHandItem == RightHandItem.Torch)
         {
             playerTorch.SetActive(true);
-            torchLight.SetLight(true);
+            torchLight.SetLight(torchLight.IsLighted);
             lighterLight.SetLight(false);
+            playerLighter.SetActive(false);
         }
         else if (currentHandItem == RightHandItem.Lighter)
         {
             playerLighter.SetActive(true);
-            lighterLight.SetLight(true);
+            lighterLight.SetLight(lighterLight.IsLighted);
             torchLight.SetLight(false);
+            playerTorch.SetActive(false);
+        }
+        else
+        {
+            torchLight.SetLight(false);
+            lighterLight.SetLight(false);
+            playerTorch.SetActive(false);
+            playerLighter.SetActive(false);
         }
     }
 
@@ -60,53 +70,41 @@ public class PlayerHands : MonoBehaviour
     {
         if (!IsPlayerLightOn)
         {
-            sparkParticles.Play();
-            lighterSparkSound.Play();
-            float badLuck = Random.Range(1, lighterChance);
-            if (badLuck != 1)
+            if (currentHandItem == RightHandItem.Torch) 
             {
-                isPlayerLightOn = true;
+                torchLight.SetLight(lighter.TryLightOn(false));
+            }
+            else if(currentHandItem == RightHandItem.Lighter)
+            {
+                lighterLight.SetLight(lighter.TryLightOn(true));
             }
         }
-        else if(currentHandItem == RightHandItem.Lighter)
+        else if (!interacting.IsLookingToFire && currentHandItem == RightHandItem.Lighter)
         {
-            if (interaction)
-            {
-                interaction = false;
-            }
-            else
-            {
-                isPlayerLightOn = false;
-            }
+            lighterLight.SetLight(false);
         }
-    }
-
-    public void FlickerON()
-    {
-        isPlayerLightOn = true;
-        interaction = true;
     }
 
     public void TakeTorch(bool isTorchLighted)
     {
         currentHandItem = RightHandItem.Torch;
-        isPlayerLightOn = isTorchLighted;
+        torchLight.SetLight(isTorchLighted);
     }
 
     public void TakeOffTorch()
     {
         currentHandItem = RightHandItem.Lighter;
-        isPlayerLightOn = false;
+        torchLight.SetLight(false);
     }
 
     private void ThrowTorch()
     {
         Vector3 pos = new Vector3(playerView.position.x, playerView.position.y - 0.5f, playerView.position.z);
         Quaternion rotation = Quaternion.Euler(Random.Range(-20f, 20f), 0, Random.Range(-20f, 20f));
-        GameObject torch = Instantiate(torchPrefab, pos, rotation);
-        Torch torchScript = torch.GetComponent<Torch>();
-        torchScript.SetLight(isPlayerLightOn);
-        torch.GetComponent<Rigidbody>().AddForce(playerView.forward * throwForce);
+        GameObject newTorch = Instantiate(torchPrefab, pos, rotation);
+        LightController newTorchLight = newTorch.GetComponent<LightController>();
+        newTorchLight.SetLight(torchLight.IsLighted);
+        newTorch.GetComponent<Rigidbody>().AddForce(playerView.forward * throwForce);
         TakeOffTorch();
     }
 }

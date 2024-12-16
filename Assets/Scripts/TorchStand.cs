@@ -14,7 +14,7 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
 
     private void Start()
     {
-        torchLight = GetComponent<LightController>();
+        torchLight = torchObject.GetComponent<LightController>();
     }
 
     public void PutTorch(bool isTorchLighted)
@@ -56,7 +56,6 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
             torchLight.SetLight(true);
-            playerHands.FlickerON();
         }
     }
 }

@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class Lighter : MonoBehaviour
 {
-    [SerializeField] private SoundHolder soundHolder;
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private ParticleSystem sparkParticles;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int lighterChance = 5;
+    private SoundHolder soundHolder;
+
+    private void Awake()
     {
-        
+        soundHolder = GameObject.FindWithTag("soundsHolder").GetComponent<SoundHolder>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        soundSource.clip = soundHolder.GetAudioClip("lighterSparks");
+    }
+
+    public bool TryLightOn(bool isHoldingLighter)
+    {
+        if (isHoldingLighter) 
+        {
+            sparkParticles.Play();
+        }
+        soundSource.Play();
+        int badLuck = Random.Range(1, lighterChance);
+        return badLuck != 1;
     }
 }

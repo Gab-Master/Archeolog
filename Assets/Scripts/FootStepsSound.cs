@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 
 public class FootStepsSound : MonoBehaviour
 {
-    [SerializeField] private SoundHolder soundHolder;
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
@@ -16,6 +15,12 @@ public class FootStepsSound : MonoBehaviour
     private float timeToPlayNextSound;
     private List<AudioClip> walkingSounds;
     private List<AudioClip> runningSounds;
+    private SoundHolder soundHolder;
+
+    private void Awake()
+    {
+        soundHolder = GameObject.FindWithTag("soundsHolder").GetComponent<SoundHolder>();
+    }
 
     private void Start()
     {
