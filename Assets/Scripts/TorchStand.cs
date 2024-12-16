@@ -5,27 +5,27 @@ using UnityEngine;
 public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
 {
     [SerializeField] private GameObject torchObject;
-    private Torch torch;
+    private LightController torchLight;
 
-    [ContextMenu("Torch light ON")] private void LightOn() { torch.SetLight(true); }
-    [ContextMenu("Torch light OFF")] private void LightOff() { torch.SetLight(false); }
-    [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); torch.SetLight(false); }
-    [ContextMenu("Without torch")] private void WithoutTorch() { torch.SetLight(false); torchObject.SetActive(false); }
+    [ContextMenu("Torch light ON")] private void LightOn() { torchLight.SetLight(true); }
+    [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.SetLight(false); }
+    [ContextMenu("With torch")] private void WithTorch() { torchObject.SetActive(true); torchLight.SetLight(false); }
+    [ContextMenu("Without torch")] private void WithoutTorch() { torchLight.SetLight(false); torchObject.SetActive(false); }
 
     private void Start()
     {
-        torch = GetComponent<Torch>();
+        torchLight = GetComponent<LightController>();
     }
 
     public void PutTorch(bool isTorchLighted)
     {
         torchObject.SetActive(true);
-        torch.SetLight(isTorchLighted);
+        torchLight.SetLight(isTorchLighted);
     }
 
     public void TakeTorch()
     {
-        torch.SetLight(false);
+        torchLight.SetLight(false);
         torchObject.SetActive(false);
     }
 
@@ -44,7 +44,7 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
         {
             if (torchObject.activeSelf)
             {
-                playerHands.TakeTorch(torch.IsLighted);
+                playerHands.TakeTorch(torchLight.IsLighted);
                 TakeTorch();
             }
         }
@@ -55,7 +55,7 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
         PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
-            torch.SetLight(true);
+            torchLight.SetLight(true);
             playerHands.FlickerON();
         }
     }

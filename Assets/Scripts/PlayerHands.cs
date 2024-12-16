@@ -5,38 +5,29 @@ using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
-    [SerializeField] private GameObject playerTorch;
-    [SerializeField] private GameObject playerLighter;
+    [SerializeField] private GameObject playerTorch, playerLighter;
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private Transform playerView;
-    
-    
-    [SerializeField] private bool isPlayerLightOn;
-    //[SerializeField] private float torchLightRange = 8f;
-    //[SerializeField] private float lighterLightRange = 3f;
-    //[SerializeField] private float torchLightIntensity = 5.5f;
-    //[SerializeField] private float lighterLightIntensity = 1f;
     [SerializeField] private float throwForce = 1200f;
     [SerializeField] private int lighterChance = 5;
-    private RightHandItem currentHandItem = RightHandItem.Lighter;
+    private LightController torchLight, lighterLight;
+    private RightHandItem currentHandItem;
     private bool interaction = false;
-    private AudioSource torchFireSound;
-    private AudioSource lighterSparkSound;
-    private AudioSource lighterFireSound;
 
     public RightHandItem CurrentHandItem => currentHandItem;
-    public bool IsPlayerLightOn => isPlayerLightOn;
+    public bool IsPlayerLightOn => torchLight.IsLighted || lighterLight.IsLighted;
 
 
     private void Start()
     {
-        isPlayerLightOn = false;
+        torchLight.SetLight(false);
+        lighterLight.SetLight(false);
+        currentHandItem = RightHandItem.Lighter;
     }
 
     private void Update()
     {
         UpdateRightHand();
-        UpdatePlayerLight();
         if (Input.GetKeyDown(KeyCode.F) && currentHandItem == RightHandItem.Torch)
         {
             ThrowTorch();
@@ -49,76 +40,25 @@ public class PlayerHands : MonoBehaviour
 
     private void UpdateRightHand()
     {
+        playerTorch.SetActive(false);
+        playerLighter.SetActive(false);
         if (currentHandItem == RightHandItem.Torch)
         {
             playerTorch.SetActive(true);
-            playerLighter.SetActive(false);
+            torchLight.SetLight(true);
+            lighterLight.SetLight(false);
         }
         else if (currentHandItem == RightHandItem.Lighter)
         {
-            playerTorch.SetActive(false);
             playerLighter.SetActive(true);
-        }
-        else
-        {
-            playerTorch.SetActive(false);
-            playerLighter.SetActive(false);
-        }
-    }
-
-    private void UpdatePlayerLight()
-    {
-        //float lightRange = currentHandItem switch
-        //{
-        //    RightHandItem.Torch => torchLightRange,
-        //    RightHandItem.Lighter => lighterLightRange,
-        //    _ => 0f
-        //};
-        //float lightIntensity = currentHandItem switch
-        //{
-        //    RightHandItem.Torch => torchLightIntensity,
-        //    RightHandItem.Lighter => lighterLightIntensity,
-        //    _ => 0f
-        //};
-        ////playerLight.range = lightRange;
-        ////playerLight.intensity = lightIntensity;
-        //playerLight.enabled = isPlayerLightOn;
-        if (isPlayerLightOn) 
-        {
-            switch (currentHandItem)
-            {
-                case RightHandItem.Torch:
-                    playerTorchLight.enabled = true;
-                    playerLighterLight.enabled = false;
-                    torchParticles.Play();
-                    lighterParticles.Stop();
-                    if (!fireSound.isPlaying){fireSound.Play();}
-                    lighterFireSound.Stop();
-                    break;
-                case RightHandItem.Lighter:
-                    playerTorchLight.enabled = false;
-                    playerLighterLight.enabled = true;
-                    if (!lighterFireSound.isPlaying) { lighterFireSound.Play(); }
-                    torchParticles.Stop();
-                    lighterParticles.Play();
-                    fireSound.Stop();
-                    break;
-            }
-        }
-        else
-        {
-            fireSound.Stop();
-            lighterParticles.Stop();
-            torchParticles.Stop();
-            lighterFireSound.Stop();
-            playerTorchLight.enabled = false;
-            playerLighterLight.enabled = false;
+            lighterLight.SetLight(true);
+            torchLight.SetLight(false);
         }
     }
 
     private void UseRightHand()
     {
-        if (!isPlayerLightOn)
+        if (!IsPlayerLightOn)
         {
             sparkParticles.Play();
             lighterSparkSound.Play();

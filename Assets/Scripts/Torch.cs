@@ -4,39 +4,7 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
 {
-    [SerializeField] private SoundHolder soundHolder;
-    [SerializeField] private AudioSource soundSource;
-    [SerializeField] private ParticleSystem lightParticles;
-    [SerializeField] private Light torchLight;
-    private AudioClip torchFireSound;
-
-    [ContextMenu("Torch light ON")] private void LightOn() { torchLight.enabled = true; }
-    [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.enabled = false; }
-
-    public bool IsLighted => torchLight.enabled;
-
-    private void Start()
-    {
-        torchFireSound = soundHolder.GetAudioClip("torchFire");
-        soundSource.clip = torchFireSound;
-        SetLight(torchLight.enabled);
-    }
-
-    public void SetLight(bool isTorchLighted)
-    {
-        torchLight.enabled = isTorchLighted;
-        if (torchLight.enabled)
-        {
-            lightParticles.Play();
-            soundSource.Play();
-        }
-        else
-        {
-            lightParticles.Stop();
-            soundSource.Stop();
-        }
-    }
-    
+    [SerializeField] private LightController torchLight;
     public void Take()
     {
         Destroy(gameObject);
@@ -47,7 +15,7 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
         PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
         if (playerHands.CurrentHandItem != RightHandItem.Torch)
         {
-            playerHands.TakeTorch(torchLight.enabled);
+            playerHands.TakeTorch(torchLight.IsLighted);
             Take();
         }
     }
@@ -55,12 +23,10 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
     public void LightIt(GameObject interacter)
     {
         PlayerHands playerHands = interacter.GetComponent<PlayerHands>();
-        if(playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
+        if (playerHands.CurrentHandItem != RightHandItem.Empty && playerHands.IsPlayerLightOn)
         {
-            SetLight(true);
+            torchLight.SetLight(true);
             playerHands.FlickerON();
         }
     }
-    
-
 }

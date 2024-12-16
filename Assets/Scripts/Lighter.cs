@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTorch : MonoBehaviour
+public class Lighter : MonoBehaviour
 {
     [SerializeField] private SoundHolder soundHolder;
-    [SerializeField] private ParticleSystem torchParticles;
-    [SerializeField] private Light playerTorchLight;
     [SerializeField] private AudioSource soundSource;
-    private AudioClip torchFireSound;
-
+    [SerializeField] private ParticleSystem sparkParticles;
+    // Start is called before the first frame update
     void Start()
     {
-        torchFireSound = soundHolder.GetAudioClip("torchFire");
+        
     }
 
     // Update is called once per frame

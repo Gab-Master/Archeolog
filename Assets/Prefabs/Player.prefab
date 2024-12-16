@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 399817008051280582}
   - component: {fileID: 3467229785375097238}
   - component: {fileID: 3650711625419066821}
-  - component: {fileID: 3698949610704453911}
   m_Layer: 13
   m_Name: zapalniczka
   m_TagString: Untagged
@@ -329,18 +328,6 @@ MonoBehaviour:
   maxRange: 3.75
   maxMove: 0
   minMove: 0
---- !u!114 &3698949610704453911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75526126853441008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626d246e864eed8418fdca455b1352a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &319265016826688222
 GameObject:
   m_ObjectHideFlags: 0
@@ -11000,7 +10987,7 @@ GameObject:
   - component: {fileID: 6231028004827042757}
   - component: {fileID: 4270393764120815783}
   - component: {fileID: 7665844902709057202}
-  - component: {fileID: 5649966300150971438}
+  - component: {fileID: 7336881839172154947}
   m_Layer: 13
   m_Name: torch
   m_TagString: Untagged
@@ -11198,7 +11185,7 @@ MonoBehaviour:
   maxRange: 9
   maxMove: 0.1
   minMove: 0
---- !u!114 &5649966300150971438
+--- !u!114 &7336881839172154947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11207,7 +11194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5582759865267630608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5027777eaf72e5145b24c66b433aa102, type: 3}
+  m_Script: {fileID: 11500000, guid: 5613f226897e0e84c86c59ad37c87e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6404669413979803384
