@@ -125,7 +125,6 @@ public class PlayerHands : MonoBehaviour
         {
             sparkParticles.Play();
             lighterSparkSound.Play();
-            //DŸwiêk próby zapalenia zapalniczki
             float badLuck = Random.Range(1, lighterChance);
             if (badLuck != 1)
             {
@@ -173,11 +172,4 @@ public class PlayerHands : MonoBehaviour
         torch.GetComponent<Rigidbody>().AddForce(playerView.forward * throwForce);
         TakeOffTorch();
     }
-}
-
-public enum RightHandItem
-{
-    Torch,
-    Lighter,
-    Empty
 }

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
+public enum RightHandItem
 {
-    void Interact(GameObject interacter);
+    Torch,
+    Lighter,
+    Empty
 }

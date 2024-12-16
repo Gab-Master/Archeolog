@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorchStand : MonoBehaviour, IInteractable
+public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted
 {
     [SerializeField] private AudioSource fireSound;
     [SerializeField] private ParticleSystem lightParticles;

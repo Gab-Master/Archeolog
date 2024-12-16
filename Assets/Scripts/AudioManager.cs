@@ -5,14 +5,21 @@ using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] SoundHolder soundHolder;
     [SerializeField] private AudioSource walkingSource;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private List<AudioClip> walkingSounds;
-    [SerializeField] private List<AudioClip> runningSounds;
     [SerializeField] private float defaultWalkSoundDelay = 0.5f;
     [SerializeField] private float defaultSprintSoundDelay = 0.5f;
     private float timeToPlayNextSound = 0.5f;
+    private List<AudioClip> walkingSounds;
+    private List<AudioClip> runningSounds;
+
+    private void Start()
+    {
+        walkingSounds = soundHolder.GetAudioList("walking");
+        runningSounds = soundHolder.GetAudioList("running");
+    }
 
     void Update()
     {

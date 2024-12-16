@@ -83,10 +83,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
-public enum MovementType
-{
-    Walking,
-    Sprinting,
-    Sneaking
-}

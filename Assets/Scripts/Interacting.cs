@@ -16,23 +16,25 @@ public class Interacting : MonoBehaviour
     private void CheckHit()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        if (Physics.Raycast(ray, out RaycastHit hit) && 
-            hit.collider.TryGetComponent(out IInteractable interactableObject) && 
-            hit.distance <= pickingDistanse) 
+        centerDot.enabled = false;
+        if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= pickingDistanse)
         {
-            centerDot.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (hit.collider.TryGetComponent(out IInteractable interactableObject))
             {
-                interactableObject.Interact(this.gameObject);
-            } 
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                interactableObject.LightIt(this.gameObject);
+                centerDot.enabled = true;
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    interactableObject.Interact(this.gameObject);
+                }
             }
-        }
-        else
-        {
-            centerDot.enabled = false;
+            if (hit.collider.TryGetComponent(out ICanBeLighted canBeLightedObject))
+            {
+                centerDot.enabled = true;
+                if (Input.GetKeyDown(KeyCode.Mouse1))
+                {
+                    canBeLightedObject.LightIt(this.gameObject);
+                }
+            }
         }
     }
 }
