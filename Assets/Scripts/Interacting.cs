@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,6 @@ public class Interacting : MonoBehaviour
     [SerializeField] private float pickingDistanse = 2f;
     private bool isLookingToFire = false;
     private IOutline lastOutlined;
-    private bool isOutlined = false;
 
     public bool IsLookingToFire => isLookingToFire;
     void Update()
@@ -22,10 +22,9 @@ public class Interacting : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         centerDot.enabled = false;
         isLookingToFire = false;
-        if (isOutlined)
+        if (!lastOutlined.IsUnityNull())
         {
             lastOutlined.UnShowOutline();
-            isOutlined = false;
         }
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.distance <= pickingDistanse)
         {
@@ -33,7 +32,6 @@ public class Interacting : MonoBehaviour
             {
                 outline.ShowOutline();
                 lastOutlined = outline;
-                isOutlined = true;
             }
             if (hit.collider.TryGetComponent(out IInteractable interactableObject))
             {

@@ -1,58 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LightBlinking : MonoBehaviour
 {
     [SerializeField] private Light lightArea;
-    [SerializeField] private int seed;
-    [SerializeField] private Vector3 startPos;
-    [SerializeField] private float startIntensity;
-    [SerializeField] private float startRange;
-    private float currIntensity;
-    private float currRange;
-    [SerializeField] private float changeRate;
-    [SerializeField] private float minIntensity;
-    [SerializeField] private float maxIntensity;
-    [SerializeField] private float minRange;
-    [SerializeField] private float maxRange;
-    [SerializeField] private float maxMove;
-    [SerializeField] private float minMove;
-    private float flicker;
-
-    private System.DateTime seed_init;
+    [SerializeField] private float minIntensity, maxIntensity;
+    [SerializeField] private float minRange, maxRange;
+    [SerializeField] private float currIntensity, currRange;
 
     public void Start()
     {
-        // light = GetComponent<Light>();
-        currIntensity = startIntensity;
-        currRange = startRange;
-        Random.InitState(seed + (int)seed_init.Millisecond);
-        flicker = Random.Range(minMove, maxMove);
-        startPos = transform.localPosition;
+        currIntensity = lightArea.intensity;
+        currRange = lightArea.range;
     }
 
     public void Update()
     {
-        //transform.localPosition = startPos + new Vector3(0,flicker,0);
-        //flicker = Random.Range(minMove, maxMove);
-        currIntensity += Random.Range(changeRate*(-1),changeRate);
-        currRange += Random.Range(changeRate * (-1), changeRate);
-        currIntensity = Mathf.Clamp(currIntensity, minIntensity, maxIntensity);
+        currIntensity = Random.Range(minIntensity, maxIntensity);
+        currRange = Random.Range(minRange, maxRange);
         lightArea.intensity = currIntensity;
-        currRange = Mathf.Clamp(currRange, minRange, maxRange);
         lightArea.range = currRange;
     }
 
-    public void setIntensityProperties(float newStartIntensity, float newMinIntensity, float newMaxIntensity)
+    public void setIntensityProperties(float newMinIntensity, float newMaxIntensity)
     {
-        startIntensity = newStartIntensity;
         minIntensity = newMinIntensity;
         maxIntensity = newMaxIntensity;
     }
-    public void setRangeProperties(float newStartRange, float newMinRange, float newMaxRange)
+    public void setRangeProperties(float newMinRange, float newMaxRange)
     {
-        startRange = newStartRange;
         minRange = newMinRange;
         maxRange = newMaxRange;
     }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 740703806948122442}
   - component: {fileID: 6620790624082391374}
-  - component: {fileID: 3650711625419066821}
   - component: {fileID: 4460913997841109231}
   - component: {fileID: 1877067475706962981}
   - component: {fileID: 3467229785375097238}
@@ -55,30 +54,6 @@ MonoBehaviour:
   lightParticles: {fileID: 3158637852826063024}
   lightSource: {fileID: 623487484350848140}
   fireSoundName: lighterFire
---- !u!114 &3650711625419066821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75526126853441008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightArea: {fileID: 623487484350848140}
-  seed: 0
-  startPos: {x: 0, y: 0, z: 0}
-  startIntensity: 1.5
-  startRange: 3.5
-  changeRate: 0.2
-  minIntensity: 1.25
-  maxIntensity: 1.75
-  minRange: 3.25
-  maxRange: 3.75
-  maxMove: 0
-  minMove: 0
 --- !u!33 &4460913997841109231
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10161,6 +10136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220214275871632732}
+  - component: {fileID: 7032736678236969021}
   - component: {fileID: 3172521583044235880}
   - component: {fileID: 6827078593360467913}
   m_Layer: 13
@@ -10185,6 +10161,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5058142888045963434}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &7032736678236969021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312017227177771242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightArea: {fileID: 3172521583044235880}
+  minIntensity: 4
+  maxIntensity: 6
+  minRange: 7
+  maxRange: 9
+  currIntensity: 5.19
+  currRange: 0
 --- !u!108 &3172521583044235880
 Light:
   m_ObjectHideFlags: 0
@@ -10552,6 +10547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2829746401805660307}
+  - component: {fileID: 2347957699661199008}
   - component: {fileID: 623487484350848140}
   - component: {fileID: 6523815774005853411}
   m_Layer: 13
@@ -10576,6 +10572,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 740703806948122442}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2347957699661199008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243872074566368195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightArea: {fileID: 623487484350848140}
+  minIntensity: 1.25
+  maxIntensity: 1.75
+  minRange: 3.25
+  maxRange: 3.75
+  currIntensity: 0
+  currRange: 0
 --- !u!108 &623487484350848140
 Light:
   m_ObjectHideFlags: 0
@@ -10633,7 +10648,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 9e-44, w: 4.903e-42}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-44, z: 4.5e-44, w: 2.63e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -11008,7 +11023,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5058142888045963434}
   - component: {fileID: 7336881839172154947}
-  - component: {fileID: 7665844902709057202}
   - component: {fileID: 4270393764120815783}
   - component: {fileID: 8186974288162252559}
   - component: {fileID: 6231028004827042757}
@@ -11052,30 +11066,6 @@ MonoBehaviour:
   lightParticles: {fileID: 4432793327676329574}
   lightSource: {fileID: 3172521583044235880}
   fireSoundName: torchFire
---- !u!114 &7665844902709057202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582759865267630608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightArea: {fileID: 3172521583044235880}
-  seed: 0
-  startPos: {x: 0, y: 0, z: 0}
-  startIntensity: 5
-  startRange: 8
-  changeRate: 0.5
-  minIntensity: 4
-  maxIntensity: 6
-  minRange: 7
-  maxRange: 9
-  maxMove: 0.1
-  minMove: 0
 --- !u!82 &4270393764120815783
 AudioSource:
   m_ObjectHideFlags: 0
