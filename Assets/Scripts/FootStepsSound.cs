@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class AudioManager : MonoBehaviour
+public class FootStepsSound : MonoBehaviour
 {
-    [SerializeField] SoundHolder soundHolder;
-    [SerializeField] private AudioSource walkingSource;
+    [SerializeField] private SoundHolder soundHolder;
+    [SerializeField] private AudioSource soundSource;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float defaultWalkSoundDelay = 0.5f;
-    [SerializeField] private float defaultSprintSoundDelay = 0.5f;
-    private float timeToPlayNextSound = 0.5f;
+
+    [SerializeField] private float defaultWalkSoundDelay = 0.7f;
+    [SerializeField] private float defaultSprintSoundDelay = 0.4f;
+
+    private float timeToPlayNextSound;
     private List<AudioClip> walkingSounds;
     private List<AudioClip> runningSounds;
 
@@ -19,6 +21,7 @@ public class AudioManager : MonoBehaviour
     {
         walkingSounds = soundHolder.GetAudioList("walking");
         runningSounds = soundHolder.GetAudioList("running");
+        timeToPlayNextSound = 0.5f;
     }
 
     void Update()
@@ -44,7 +47,7 @@ public class AudioManager : MonoBehaviour
     private void PlayRandomSound(List<AudioClip> sounds)
     {
         int index = Random.Range(0, sounds.Count-1);
-        walkingSource.clip = sounds[index];
-        walkingSource.Play();
+        soundSource.clip = sounds[index];
+        soundSource.Play();
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class light_variable_intensity : MonoBehaviour
+public class LightBlinking : MonoBehaviour
 {
     [SerializeField] private Light lightArea;
     [SerializeField] private int seed;

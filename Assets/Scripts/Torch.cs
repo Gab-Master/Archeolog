@@ -7,7 +7,7 @@ public class Torch : MonoBehaviour, IInteractable, ICanBeLighted
     [SerializeField] private AudioSource fireSound;
     [SerializeField] private ParticleSystem lightParticles;
     [SerializeField] private Light torchLight;
-    private light_variable_intensity lvi;
+    private LightBlinking lvi;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.enabled = true; }
     [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.enabled = false; }

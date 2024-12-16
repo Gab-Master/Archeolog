@@ -5,18 +5,12 @@ using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
-    [SerializeField] private AudioSource fireSound;
-    [SerializeField] private AudioSource lighterSparkSound;
-    [SerializeField] private AudioSource lighterFireSound;
-    [SerializeField] private ParticleSystem sparkParticles;
-    [SerializeField] private ParticleSystem torchParticles;
-    [SerializeField] private ParticleSystem lighterParticles;
     [SerializeField] private GameObject playerTorch;
     [SerializeField] private GameObject playerLighter;
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private Transform playerView;
-    [SerializeField] private Light playerLighterLight;
-    [SerializeField] private Light playerTorchLight;
+    
+    
     [SerializeField] private bool isPlayerLightOn;
     //[SerializeField] private float torchLightRange = 8f;
     //[SerializeField] private float lighterLightRange = 3f;
@@ -26,6 +20,9 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private int lighterChance = 5;
     private RightHandItem currentHandItem = RightHandItem.Lighter;
     private bool interaction = false;
+    private AudioSource fireSound;
+    private AudioSource lighterSparkSound;
+    private AudioSource lighterFireSound;
 
     public RightHandItem CurrentHandItem => currentHandItem;
     public bool IsPlayerLightOn => isPlayerLightOn;

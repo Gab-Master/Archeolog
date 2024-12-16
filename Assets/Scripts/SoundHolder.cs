@@ -13,6 +13,8 @@ public class SoundHolder : MonoBehaviour
 
     private void Awake()
     {
+        soundsHolder = new();
+        listsSoundHolder = new();
         foreach (AudioClipsHolder holder in soundsHolderList)
         {
             soundsHolder[holder.SoundName] = holder.AudioSound;
@@ -33,7 +35,7 @@ public class SoundHolder : MonoBehaviour
     }
 }
 
-[Serializable] //normally you can't see dictionary in inspektor :(
+[Serializable] //normally you can't see dictionary in inspector :(
 public class AudioClipsHolder
 {
     [SerializeField] private string soundName;

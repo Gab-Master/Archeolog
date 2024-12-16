@@ -44,9 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d079f266f72fb54e91eaf94924ec9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundsHolderList:
-  - soundName: 
-    audioSound: {fileID: 0}
+  soundsHolderList: []
   soundsListsHolderList:
   - soundsListName: running
     audioSoundList:
