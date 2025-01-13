@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5963784754854532876}
-  - component: {fileID: 8336977815936084447}
+  - component: {fileID: 4543354575520650291}
   - component: {fileID: 9016711607703321363}
   - component: {fileID: 3391182063982549884}
   m_Layer: 12
@@ -236,7 +236,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3725879694068518709}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &8336977815936084447
+--- !u!114 &4543354575520650291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,16 +245,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6377754064993131612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca32ea622cc9273419d05d3e3cab9b34, type: 3}
+  m_Script: {fileID: 11500000, guid: 37545ce7fad6eba4d9d53ccd7ef76f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightArea: {fileID: 9016711607703321363}
-  minIntensity: 4
+  light: {fileID: 9016711607703321363}
+  startPos: {x: 0, y: 0, z: 0}
+  minIntensity: 3
   maxIntensity: 6
-  minRange: 7
-  maxRange: 9
-  currIntensity: 0
-  currRange: 0
+  minRange: 4
+  maxRange: 8
+  minMove: -0.4
+  maxMove: 0.4
+  minChangeRate: 0.05
+  maxChangeRate: 0.2
 --- !u!108 &9016711607703321363
 Light:
   m_ObjectHideFlags: 0
