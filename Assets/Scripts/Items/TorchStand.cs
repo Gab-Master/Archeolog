@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted, IOutline
 {
     [SerializeField] private GameObject torchObject;
     [SerializeField] private Outline outline;
     private LightController torchLight;
+
+    [SerializeField] private UnityEvent onTorchPut;
 
     [ContextMenu("Torch light ON")] private void LightOn() { torchLight.SetLight(true); }
     [ContextMenu("Torch light OFF")] private void LightOff() { torchLight.SetLight(false); }
@@ -23,6 +26,8 @@ public class TorchStand : MonoBehaviour, IInteractable, ICanBeLighted, IOutline
     {
         torchObject.SetActive(true);
         torchLight.SetLight(isTorchLighted);
+        onTorchPut.Invoke();
+        Debug.Log("put");
     }
 
     public void TakeTorch()
